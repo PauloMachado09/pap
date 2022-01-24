@@ -1,0 +1,26 @@
+{
+  "name": "pap",
+  "version": "1.0.0",
+  "description": "API projeto PAP",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PauloMachado09/pap.git"
+  },
+  "author": "Paulo Machado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PauloMachado09/pap/issues"
+  },
+  "homepage": "https://github.com/PauloMachado09/pap#readme",
+  "dependencies": {
+    "dotenv": "^14.2.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.7",
+    "nodemon": "^2.0.15",
+    "path": "^0.12.7"
+  }
+}
