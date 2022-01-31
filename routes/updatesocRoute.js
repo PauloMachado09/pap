@@ -1,27 +1,40 @@
 const express = require('express')
-const { execMap } = require('nodemon/lib/config/defaults')
 const router = express.Router()
 
+const Socio = require('../models/socioModel')
+
 router.post('/', (req, res) => {
-    console.log(req.body)
-    socio.find0neAndUpdate({'numsocio': {$eq: req.body.numsocio}})
+    Socio.findOneAndUpdate(
+        {'numsocio':{$eq: req.body.numsocio}})
     .exec()
     .then((result) =>{
-        if(result == null){
+        if(result==null){
             res.json({
-                msg: 'Sócio não encontrado'
+                msg: 'Socio não encontrado',
+            })  
+        }
+        else {
+            Socio.findOneAndUpdate(
+                {'numsocio':{$eq: req.body.numsocio}},
+                {$set: {'cc': req.body.cc, 'nif': req.body.nif}},
+                {new:true}
+            )
+            .then((obj)=>{
+                res.json({
+                    msg: 'Socio alterado',
+                    data: obj
+                })
+            })
+            .catch(error => {
+                res.json({
+                    msg: 'Ocorreu um erro'
+                })
             })
         }
-            else
-         {
-                socio.find0neAndUpdate(
-                    {'numsocio': {$eq: req.body.numsocio}},
-                    {$eq: numsocio.body.numsocio},
-                    {new:true} 
-                )}
-     })
+        
+    })
 
 })
 
-
 module.exports = router
+
