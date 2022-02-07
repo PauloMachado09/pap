@@ -9,8 +9,10 @@ app.use(express.json({ extended: false }))
 
 app.use('/createsoc', require('./routes/createsocRoute'))
 app.use('/getsoc', require('./routes/getsocRoute'))
-app.use('/updatesoc', require ('./routes/updatesocRoute'))
-app.use('/deletesoc', require ('./routes/deletesocRoute'))
+app.use('/updatesoc', require('./routes/updatesocRoute'))
+app.use('/deletesoc', require('./routes/deletesocRoute'))
+
+
 
 mongoose.connect(process.env.MONGOURI, 
     {useNewUrlParser: true, useUnifiedTopology: true},
