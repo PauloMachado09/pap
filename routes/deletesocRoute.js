@@ -3,20 +3,29 @@ const router = express.Router()
 
 const socio = require('../models/socioModel')
 
-router.post("/",(req, res) => {
-    console.log(req.body); 
-    socio.getAll()
-      .then(result => {
-        res.json("numsocio", {
-            nome: req.body.nome,
-            numsocio: req.body.numsocio,
-            cc: req.body.cc,
-            nif: req.body.nif,
-            email: req.body.email,
-            username: req.body.email,
-        })
+router.delete('/', (req, res) => {
+    socio.findOneAndDelete(
+        {'numsocio':{$eq: req.body.numsocio}}      
+    )
+    .then((result,error)=>{
+      if(error) res.json({
+        msg: 'Ocorreu um problema'
       })
-  });
+      if(result)res.json({
+        msg: 'Sócio elmininado'
+      })
+      if(result==null)res.json({
+        msg: 'Sócio não encontrado'
+      })
+    })
+    .catch(error => {
+        res.json({
+            msg: 'Ocorreu um erro'
+        })
+    })
+  })
+
+
 
   module.exports = router
   

@@ -11,6 +11,7 @@ app.use('/createsoc', require('./routes/createsocRoute'))
 app.use('/getsoc', require('./routes/getsocRoute'))
 app.use('/updatesoc', require('./routes/updatesocRoute'))
 app.use('/deletesoc', require('./routes/deletesocRoute'))
+app.use('/getallsoc', require('./routes/getallsocRoute'))
 
 
 

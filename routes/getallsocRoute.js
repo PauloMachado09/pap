@@ -3,9 +3,9 @@ const router = express.Router()
 
 const socio = require('../models/socioModel')
 
-router.post('/', (req, res) => {
+router.get('/', (req, res) => {
     console.log(req.body)
-    socio.findOne(0)
+    socio.find()
     .exec()
     .then((result)=>{
         console.log(result)

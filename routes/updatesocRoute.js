@@ -3,9 +3,9 @@ const router = express.Router()
 
 const socio = require('../models/socioModel')
 
-router.post('/', (req, res) => {
+router.put('/', (req, res) => {
     socio.findOne(
-        {'numsocio':{$eq: req.body.numsocio}})
+    {'numsocio':{$eq: req.body.numsocio}})
     .exec()
     .then((result) =>{
         if(result==null){
@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
         else {
             socio.findOneAndUpdate(
                 {'numsocio':{$eq: req.body.numsocio}},
-                {$set: {'cc': req.body.cc, 'nif': req.body.nif}},
+                {$set: {'cc': req.body.cc, 'nif': req.body.nif, 'email': req.body.email, 'nome': req.body.nome}},
                 {new:true}
             )
             .then((obj)=>{
