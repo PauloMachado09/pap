@@ -13,6 +13,12 @@ app.use('/updatesoc', require('./routes/updatesocRoute'))
 app.use('/deletesoc', require('./routes/deletesocRoute'))
 app.use('/getallsoc', require('./routes/getallsocRoute'))
 
+app.use('/createdes', require('./routes/createdesRoute'))
+app.use('/deletedes', require('./routes/deletedesRoute'))
+app.use('/updatedes', require('./routes/updatedesRoute'))
+app.use('/getdes', require('./routes/getdesRoute'))
+app.use('/getalldes', require('./routes/getalldesRoute'))
+
 
 
 mongoose.connect(process.env.MONGOURI, 
