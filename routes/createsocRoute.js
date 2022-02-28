@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
             })
             newSocio.save()
             .then((result) => {
-                console.log('Objeto criado')
+                console.log('Sócio criado')
                 res.json({
                     msg: 'Objeto criado', 
                     socio: result
