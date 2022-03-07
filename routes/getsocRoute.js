@@ -5,7 +5,7 @@ const socio = require('../models/socioModel')
 
 router.post('/', (req, res) => {
     console.log(req.body)
-    socio.findOne(0)
+    socio.findOne()
     .exec()
     .then((result)=>{
         console.log(result)

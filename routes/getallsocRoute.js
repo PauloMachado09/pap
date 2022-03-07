@@ -20,8 +20,7 @@ router.get('/', (req, res) => {
             res.json({
                 msg:'Socio encontrado',
                 dados: result
-            })
-            
+            })   
         }
     })
     .catch(error =>{
