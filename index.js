@@ -25,8 +25,10 @@ mongoose.connect(process.env.MONGOURI,
     {useNewUrlParser: true, useUnifiedTopology: true},
     () => console.log("Connected to MongoDB"));
 
+const port = process.env.port || 3000
 
-app.listen(3000,(error)=>{
+
+app.listen(port,(error)=>{
     if(error) throw error
     console.log('Api listening on port 3000')
 })
