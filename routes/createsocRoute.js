@@ -14,10 +14,10 @@ router.post('/', (req, res) => {
                numsocio: req.body.numsocio,
                cc: req.body.cc,
                nif: req.body.nif,
+               telemovel: req.body.telemovel,
                email: req.body.email,
-               username: req.body.email,
-               password: null,
-               pwd_changed: false
+               pin: null,
+               pin_changed: false
             })
             newSocio.save()
             .then((result) => {
