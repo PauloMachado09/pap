@@ -25,7 +25,7 @@ mongoose.connect(process.env.MONGOURI,
     {useNewUrlParser: true, useUnifiedTopology: true},
     () => console.log("Connected to MongoDB"));
 
-const port = process.env.port
+const port = process.env.PORT || 3000
 
 
 app.listen(port,(error)=>{
