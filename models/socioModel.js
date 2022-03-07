@@ -5,10 +5,10 @@ const socio = mongoose.Schema({
     'numsocio' : {'type': 'Number'},
     'cc' : {'type': 'Number'},
     'nif' : {'type': 'Number'},
+    'telemovel' : {'type' : 'Number'},
     'email': {'type': 'String'},
-    'username' : {'type': 'String'},
-    'password' : {'type': 'String'},
-    'pwd_changed' : {'type': Boolean},
+    'pin' : {'type' : 'Number'},
+    'pin_changed' : {'type': Boolean},
     date: {'type': Date, default: Date.now}
 })
 

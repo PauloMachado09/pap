@@ -4,7 +4,7 @@ const router = express.Router()
 const socio = require('../models/socioModel')
 
 router.get('/', (req, res) => {
-    console.log(req.body)
+    let arr = []
     socio.find()
     .exec()
     .then((result)=>{
@@ -16,10 +16,17 @@ router.get('/', (req, res) => {
             })
         }
         else {
-            console.log(result)
+            for(i in result){
+                let data = {
+                    _id: result[i]._id,
+                    nome: result[i].nome,
+                    nif: result[i].nif
+                }
+                arr.push(data)
+            }
             res.json({
                 msg:'Socio encontrado',
-                dados: result
+                dados: arr
             })   
         }
     })
