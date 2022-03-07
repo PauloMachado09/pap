@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
                 arr.push(data)
             }
             res.json({
-                msg:'Socio encontrado',
+                msg:'Sócios encontrados',
                 dados: arr
             })   
         }
