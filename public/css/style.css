@@ -417,6 +417,10 @@ section {
   }
 }
 
+.container .table{
+  font-size: medium;
+  text-align: left;
+}
 
 .gradient-custom-2 {
   /* fallback for old browsers */

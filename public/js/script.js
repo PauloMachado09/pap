@@ -5,13 +5,12 @@ function insertUtilizador() {
     const email = document.getElementById('email').email
 
 
-    if(validaFormData(someExpressFiles,nome,nif,numeroTelemovel,email)==true){
+    if(validaFormData(nome,nif,numeroTelemovel,email)==true){
         let fd = new FormData()
         fd.append('nome', nome )
         fd.append('nif', nif )
         fd.append('numeroTelemovel', numeroTelemovel )
         fd.append('email', email )
-        
         var options = {
             method: 'POST',
             headers: {
@@ -63,7 +62,7 @@ function validaFormData(nome,nif,numeroTelemovel,email){
             }
         }
         if (i == numeroTelemovel.length) {
-            const numeroTelemovel = parseInt(numeroTelemovel)
+            const numeroTelemovelInt = parseInt(numeroTelemovel)
         }
     }
  
