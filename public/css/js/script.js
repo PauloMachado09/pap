@@ -3,16 +3,15 @@ function insertUtilizador() {
     const nif = document.getElementById('nif').value
     const numeroTelemovel= document.getElementById('numeroTelemovel').value
     const email = document.getElementById('email').email
-    const destino = document.getElementById('destino').value
-    const someExpressFiles = document.getElementById('someExpressFiles').files[0]
 
-    if(validaFormData(someExpressFiles,nome,nif,numeroTelemovel,email,destino)==true){
+
+    if(validaFormData(someExpressFiles,nome,nif,numeroTelemovel,email)==true){
         let fd = new FormData()
         fd.append('nome', nome )
         fd.append('nif', nif )
-        fd.append('numeroTelemovel', numeroT )
+        fd.append('numeroTelemovel', numeroTelemovel )
         fd.append('email', email )
-        fd.append('destino', destino )
+        
         var options = {
             method: 'POST',
             headers: {
@@ -21,7 +20,7 @@ function insertUtilizador() {
             },
             body: fd,
         }
-        fetch('http://localhost:4001/createsoc', options)
+        fetch('http://localhost:3000/createsoc', options)
             .then(res => res.json())
             .then(data => {
                 if(data.type=='success')
@@ -34,7 +33,7 @@ function insertUtilizador() {
     }
 }
 
-function validaFormData(someExpressFiles,nome,nif,numeroTelemovel,email,destino){
+function validaFormData(nome,nif,numeroTelemovel,email){
     if (nome == '')
         return alert('Tem de preencher o nome.')
     if (nif == '')
@@ -64,7 +63,7 @@ function validaFormData(someExpressFiles,nome,nif,numeroTelemovel,email,destino)
             }
         }
         if (i == numeroTelemovel.length) {
-            const numeroTInt = parseInt(numeroTelemovel)
+            const numeroTelemovel = parseInt(numeroTelemovel)
         }
     }
  
@@ -72,7 +71,7 @@ function validaFormData(someExpressFiles,nome,nif,numeroTelemovel,email,destino)
 }
 
 function linhasTabela(){
-    fetch('http://localhost:4001/getsoc')
+    fetch('http://localhost:3000/getsoc')
     .then(res=>res.json())
     .then(json=>{
         if(json.type=='success'){
@@ -107,7 +106,7 @@ function eliminar(_id) {
             'Content-type': 'application/json'
         }
     }
-    fetch('http://localhost:4001/deletesoc/' + _id, options)
+    fetch('http://localhost:3000/deletesoc/' + _id, options)
     .then(res=>res.json())
     .then(json=>{
         alert(json.msg)
