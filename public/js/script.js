@@ -1,4 +1,4 @@
-function insertUtilizador() {
+function insertSócio() {
     const nome = document.getElementById('nome').value
     const nif = document.getElementById('nif').value
     const numeroTelemovel= document.getElementById('numeroTelemovel').value

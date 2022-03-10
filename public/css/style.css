@@ -14,20 +14,24 @@
 }
 
 .content-wrapper {
-  font-size: 15px;
-  margin-left: 150px;
-  margin-top: 100px;
-}
+  font-size: 50px;
+  margin: 150px;
+  padding: 50px;
+  background-color: #ddd;
+} 
+
 
 .responsive-map {
-
-  margin-top: 50px;
+  margin-left: 800px; 
+  float: left;
+  position:absolute;
+  left: 250px; 
+	top: 350px;
 }
 
-
-
 .page-wrapper {
-font-size: 15px;
+  font-size: 18px;
+
 }
 
 html {
@@ -417,9 +421,21 @@ section {
   }
 }
 
+.container .table-bordered{
+  color: #000000;
+}
+
 .container .table{
   font-size: medium;
+  font-style: normal;
   text-align: left;
+
+}
+
+.container .table .titlee{
+  background-color: #dfdfdfb7;
+  color: rgb(0, 0, 0);
+  text-align: center;
 }
 
 .gradient-custom-2 {
