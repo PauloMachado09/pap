@@ -1,11 +1,20 @@
 const express = require('express')
 const mongoose = require('mongoose')
-require('dotenv').config({ path: './private/.env' })
+const path = require('path')
 const app = express()
+
+require('dotenv').config({ path: './public/private/.env' })
+
+
+app.get('/public', function (req, response) {
+  response.sendFile(path.join(dirname, '/public/index.html  '))
+})
 
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json({ extended: false }))
+
+app.use(express.static('./public'))
 
 app.use('/createsoc', require('./routes/createsocRoute'))
 app.use('/getsoc', require('./routes/getsocRoute'))
