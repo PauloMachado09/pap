@@ -56,7 +56,10 @@ html::-webkit-scrollbar-thumb {
 section {
   padding: 5rem 9%;
 }
-
+.btn-groupcontainer{
+position: fixed;
+margin-top: 250px;
+}
 .btn {
   margin-top: 1rem;
   margin-left: 620px;
@@ -169,7 +172,7 @@ section {
   border-radius: 25px;
 }
 
-/* TABELA VER UTILIZADORES */
+/* tabela de ver os sócios */
 .tabela{
   background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8));
   position: absolute;
@@ -363,6 +366,7 @@ section {
 }
 
 .footer .box-container .box a:hover {
+  display: block;
   color: #000000;
 }
 
@@ -436,6 +440,9 @@ section {
   background-color: #dfdfdfb7;
   color: rgb(0, 0, 0);
   text-align: center;
+}
+.container .row{
+  font-size: medium;
 }
 
 .gradient-custom-2 {

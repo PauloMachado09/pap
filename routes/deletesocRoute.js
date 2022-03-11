@@ -3,7 +3,7 @@ const router = express.Router()
 
 const socio = require('../models/socioModel')
 
-router.delete('/', (req, res) => {
+router.delete('/:numsocio', (req, res) => {
     socio.findOneAndDelete(
         {'numsocio':{$eq: req.body.numsocio}}      
     )
