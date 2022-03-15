@@ -39,7 +39,6 @@
           <li><a href= "#">Sócios </a>
               <ul>
                   <li><a href="criarsócio.html">Criar Sócio</a></li>
-                  <li><a href="gerirsócio.html">Gerir Sócio</a></li>
               </ul>
           </li>
           <li><a href= "#">Descontos</a>
@@ -55,7 +54,7 @@
 </header>
 
   
-    <div class="content">
+    
         <br>
         <br>
         <br>
@@ -63,58 +62,62 @@
         <br>
         <br>
         <br><br><br><br><br>
-        <div class="fundo">
-          <br>
-          <div class="container-fluid p-7 text-center letras">
-            <h1>Criar Sócio</h1>
+
+        <section class="newsletter">
+
+          <div class="content">
+              <h1 class="heading">Criar Sócio</h1>
           </div>
-    
-          <br>
-          <div class="container">
-            <div class="row">
-              
-              <div class="col-m-5">
-                <label for="nome" class="col-sm-12 col-form-label letras">Nome:
-                </label>
-                <input class="form-control" type="text" id="nome" placeholder="Inserir o nome ">
-              </div>
-    
-              <div class="col-m-5">
-                <label for="nif" class="col-sm-12 col-form-label letras">Número de Indentificação Fiscal:
-                </label>
-                <input class="form-control" type="text" id="nif" placeholder="Inserir o NIF">
-              </div>
-
-              <div class="col-m-5">
-                <label for="cc" class="col-sm-12 col-form-label letras">Número de Cartão de Cidadão:
-                </label>
-                <input class="form-control" type="text" id="cc" placeholder="Inserir o Cartão de cidadão">
-              </div>
-    
-              <div class="col-m-3">
-                <label for="numeroTelemovel" class="col-sm-12 col-form-label letras">Número de Telemóvel:
-                </label>
-                <input class="form-control" type="text" id="numeroTelemovel" placeholder="Inserir o número de telemóvel">
-              </div>
-
-              <div class="col-m-3">
-                <label for="email" class="col-sm-12 col-form-label letras">Email:
-                </label>
-                <input class="form-control" type="text" id="email" placeholder="Inserir o email">
-              </div>
-    
-
-    
-              <div class="col-sm-3 btnTeste">
-                <button type="button" onclick="insertSócio();" class="btnCriarUtilizadores">Criar Sócio</button>
-              </div>
-              
-             
-            </div>
-            <br>
-          </div>
+      
+      </section>
+        <table>
+          <tr>
+              <td>
+                  <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                      <div>
+                          <label>Nome:</label><label class="validation-error hide" id="fullNameValidationError">Preencha este espaço</label>
+                          <input type="text" name="fullName" id="fullName">
+                      </div>
+  
+  
+                      <div>
+                          <label>Número de Sócio:</label>
+                          <input type="text" name="Numsoc" id="Numsoc">
+                      </div>
+                      <div>
+                          <label>Número do Cartão de Cidadão:</label>
+                          <input type="text" name="CC" id="CC">
+                      </div>
+                      <div>
+                        <div>
+                          <label>Email:</label>
+                          <input type="text" name="email" id="email">
+                      </div>
+                      <div  class="form-action-buttons">
+                          <input type="submit" value="Submit">
+                      </div>
+                  </form>
+              </td>
+              <td>
+                  <table class="list" id="employeeList">
+                      <thead>
+                          <tr>
+                              <th>Nome</th>
+                              <th>Número de Sócio</th>
+                              <th>Número do CC</th>
+                              <th>email</th>
+                              <th></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+  
+                      </tbody>
+                  </table>
+              </td>
+          </tr>
+      </table>
         </div>
-      </div>
+  
     
     
 
@@ -142,20 +145,12 @@
                 <div class="box">
                     <h3>Links</h3>
                     <a href="index.html">home</a>
-                    <a href="Socio.html">Sócios</a>
-                    <a href="desconto.html">Descontos</a>
+                    <a href="criarsócio.html">Sócios</a>
+                    <a href="criardesconto.html">Descontos</a>
                     <a href="contacto.html">Contactos</a>
                 </div>
         
-                <div class="box">
-                    <h3>extra links</h3>
-                    <a href="#">my account</a>
-                    <a href="#">my order</a>
-                    <a href="#">my wishlist</a>
-                    <a href="#">ask questions</a>
-                    <a href="#">terms of use</a>
-                    <a href="#">privacy policy</a>
-                </div>
+        
         
                 <div class="box">
                     <h3>Contacte-nos</h3>

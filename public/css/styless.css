@@ -64,3 +64,31 @@
   header .navbar ul li:hover > ul {
       display: initial;
   }
+
+  table{
+    margin-top: 50px;
+    text-align: center;
+    background: rgb(107, 107, 107);
+    color: #fff;
+  }
+  
+  #show th, #show td{
+    padding: 13px;
+  }
+  
+  #btna td input{
+    width: 100%;
+  }
+
+ .tabledesconto{
+  background-color: rgb(255, 255, 255);
+  color: black;
+  font-size: medium;
+  margin-left: auto;
+  margin-right: auto;
+ }
+ 
+ .tabledesconto .titlee{
+   text-align: center;
+   background-color: rgba(107, 107, 107, 0.151);
+ }

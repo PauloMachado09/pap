@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
                nif: req.body.nif,
                telemovel: req.body.telemovel,
                email: req.body.email,
-               pin: null,
+               pin: req.body.pin,
                pin_changed: false
             })
             newSocio.save()

@@ -1,225 +1,165 @@
-function init (){
-    getinsertSócio()
-    validaCriarsócio ()
-    validaCriarDesconto()
-    insertDesconto
-}
 
-function insertSócio() {
-    const nome = document.getElementById('nome').value
-    const nif = document.getElementById('nif').value
-    const cc = document.getElementById('cc').value
-    const numeroTelemovel= document.getElementById('numeroTelemovel').value
-    const email = document.getElementById('email').email
+//Gerir Sócios
 
+var selectedRow = null
 
-    if(validaCriarsócio(nome,nif,cc,numeroTelemovel,email)==true){
-        let fd = new criarsócio()
-        fd.append('nome', nome )
-        fd.append('nif', nif )
-        fd.append('cc', cc )
-        fd.append('numeroTelemovel', numeroTelemovel )
-        fd.append('email', email )
-        var options = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'myheader': nif
-            },
-            body: fd,
-        }
-        fetch('http://localhost:3000/createsoc', options)
-            .then(res => res.json())
-            .then(data => {
-                if(data.type=='success')
-                    alert(data.msg)
-                else alert('Ocorreu um erro...')
-            })
-            .catch((err) => {
-                console.log('Request failed', err.message)
-            });
+function onFormSubmit() {
+    if (validate()) {
+        var formData = readFormData();
+        if (selectedRow == null)
+            insertNewRecord(formData);
+        else
+            updateRecord(formData);
+        resetForm();
     }
 }
 
-function validaCriarsócio(nome,nif,cc,numeroTelemovel,email){
-    if (nome == '')
-        return alert('Tem de preencher o nome.')
-    if (nif == '')
-        return alert('Tem de indicar o NIF.')
-        if (cc == '')
-        return alert('Tem de indicar o Cc.')
-        else{
-            let i = 0
-        for (i; i < cc.length; i++) {
-            let c = cc.charAt(i)
-            if (isNaN(c)) {
-                return alert('CC inválido')
-            }
-        }
-    }
-        if (i == nif.length) {
-            const nifInt = parseInt(nif)
-        }
-        if (email == '')
-        return alert('Tem de preencher o email.')
-    else {
-        let i = 0
-        for (i; i < nif.length; i++) {
-            let c = nif.charAt(i)
-            if (isNaN(c)) {
-                return alert('NIF inválido')
-            }
-        }
-        if (i == nif.length) {
-            const nifInt = parseInt(nif)
-        }
-    }
-
-    if (numeroTelemovel == '')
-        alert('Tem de indicar um telemóvel.')
-    else {
-        let i = 0
-        for (i; i < numeroTelemovel.length; i++) {
-            let c = numeroTelemovel.charAt(i)
-            if (isNaN(c)) {
-                return alert('Telemóvel com números inválidos')
-            }
-        }
-        if (i == numeroTelemovel.length) {
-            const numeroTelemovelInt = parseInt(numeroTelemovel)
-        }
-    }
- 
-    return true
+function readFormData() {
+    var formData = {};
+    formData["fullName"] = document.getElementById("fullName").value;
+    formData["Numsoc"] = document.getElementById("Numsoc").value;
+    formData["CC"] = document.getElementById("CC").value;
+    formData["email"] = document.getElementById("email").value;
+    return formData;
 }
 
-/*
-function linhasTabela(){
-    fetch('http://localhost:3000/getsoc')
-    .then(res=>res.json())
-    .then(json=>{
-        if(json.type=='success'){
-            const tabela = document.getElementById('corpoTabela')
-            tabela.innerHTML=''
-            for(i in json.msg){
-                let linha = 
-                `<tr>
-                    <td class="text-center">${json.msg[i].nome}</td>
-                    <td class="text-center">${json.msg[i].nif}</td>
-                    <td class="text-center">
-                    <button type="button" class="btn btn-secondary me-1">Ver Detalhes</button>
-                    <button type="button" class="btn btn-light me-1">Editar</button>
-                    <button type="button" class="btn btn-danger" onclick="eliminar('${json.msg[i].cc}')">Eliminar</button>
-                    </td>
-                </tr>`
-                tabela.innerHTML+=linha
-            }
-        }
-
-    })
-    .catch((error)=>{
-        alert(error)
-    })
+function insertNewRecord(data) {
+    var table = document.getElementById("employeeList").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.length);
+    cell1 = newRow.insertCell(0);
+    cell1.innerHTML = data.fullName;
+    cell2 = newRow.insertCell(1);
+    cell2.innerHTML = data.Numsoc;
+    cell3 = newRow.insertCell(2);
+    cell3.innerHTML = data.CC;
+    cell4 = newRow.insertCell(3);
+    cell4.innerHTML = data.email;
+    cell4 = newRow.insertCell(4);
+    cell4.innerHTML = `<a onClick="onEdit(this)">Atualizar</a>
+                       <a onClick="onDelete(this)">Eliminar</a>`;
 }
 
-function eliminar(_id) {
-    var options = {
-        method: 'DELETE',
-        headers: {
-            'Content-type': 'application/json'
-        }
+function resetForm() {
+    document.getElementById("fullName").value = "";
+    document.getElementById("Numsoc").value = "";
+    document.getElementById("CC").value = "";
+    document.getElementById("email").value = "";
+    selectedRow = null;
+}
+
+function onEdit(td) {
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById("fullName").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("Numsoc").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("CC").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("email").value = selectedRow.cells[3].innerHTML;
+}
+function updateRecord(formData) {
+    selectedRow.cells[0].innerHTML = formData.fullName;
+    selectedRow.cells[1].innerHTML = formData.Numsoc;
+    selectedRow.cells[2].innerHTML = formData.CC;
+    selectedRow.cells[3].innerHTML = formData.email;
+}
+
+function onDelete(td) {
+    if (confirm('Tem a certeza que quer eliminar este sócio ?')) {
+        row = td.parentElement.parentElement;
+        document.getElementById("employeeList").deleteRow(row.rowIndex);
+        resetForm();
     }
-    fetch('http://localhost:3000/deletesoc/' + _id, options)
-    .then(res=>res.json())
-    .then(json=>{
-        alert(json.msg)
-        linhasTabela()
-    })
 }
-*/
+function validate() {
+    isValid = true;
+    if (document.getElementById("fullName").value == "") {
+        isValid = false;
+        document.getElementById("fullNameValidationError").classList.remove("hide");
+    } else {
+        isValid = true;
+        if (!document.getElementById("fullNameValidationError").classList.contains("hide"))
+            document.getElementById("fullNameValidationError").classList.add("hide");
+    }
+    return isValid;
+}
 
-function insertDesconto() {
-    const nomeE = document.getElementById('Nome empresa').value
-    const nif = document.getElementById('nif').value
-    const numeroTelemovel= document.getElementById('numeroTelemovel').value
-    const email = document.getElementById('email').email
 
+var selectedRow = null
 
-    if(validaCriarDesconto(nomeE,nif,numeroTelemovel,email)==true){
-        let fd = new validaCriarDesconto()
-        fd.append('nomeE', nomeE )
-        fd.append('nif', nif )
-        fd.append('numeroTelemovel', numeroTelemovel )
-        fd.append('email', email )
-        var options = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'myheader': nif
-            },
-            body: fd,
-        }
-        fetch('http://localhost:3000/createdesc', options)
-            .then(res => res.json())
-            .then(data => {
-                if(data.type=='success')
-                    alert(data.msg)
-                else alert('Ocorreu um erro...')
-            })
-            .catch((err) => {
-                console.log('Request failed', err.message)
-            });
+function onFormSubmit() {
+    if (validate()) {
+        var formData = readFormData();
+        if (selectedRow == null)
+            insertNewRecord(formData);
+        else
+            updateRecord(formData);
+        resetForm();
     }
 }
 
-function validaCriarDesconto(nomeE,nif,numeroTelemovel,email){
-    if (nomeE == '')
-        return alert('Tem de preencher o nome.')
-    if (nif == '')
-        return alert('Tem de indicar o NIF.')
-        if (cc == '')
-        return alert('Tem de indicar o Cc.')
-        else{
-            let i = 0
-        for (i; i < cc.length; i++) {
-            let c = cc.charAt(i)
-            if (isNaN(c)) {
-                return alert('CC inválido')
-            }
-        }
-    }
-        if (i == nif.length) {
-            const nifInt = parseInt(nif)
-        }
-        if (email == '')
-        return alert('Tem de preencher o email.')
-    else {
-        let i = 0
-        for (i; i < nif.length; i++) {
-            let c = nif.charAt(i)
-            if (isNaN(c)) {
-                return alert('NIF inválido')
-            }
-        }
-        if (i == nif.length) {
-            const nifInt = parseInt(nif)
-        }
-    }
-
-    if (numeroTelemovel == '')
-        alert('Tem de indicar um telemóvel.')
-    else {
-        let i = 0
-        for (i; i < numeroTelemovel.length; i++) {
-            let c = numeroTelemovel.charAt(i)
-            if (isNaN(c)) {
-                return alert('Telemóvel com números inválidos')
-            }
-        }
-        if (i == numeroTelemovel.length) {
-            const numeroTelemovelInt = parseInt(numeroTelemovel)
-        }
-    }
- 
-    return true
+function readFormData() {
+    var formData = {};
+    formData["empresas"] = document.getElementById("empresas").value;
+    formData["Numsoc"] = document.getElementById("Numsoc").value;
+    formData["CC"] = document.getElementById("CC").value;
+    formData["email"] = document.getElementById("email").value;
+    return formData;
 }
+
+function insertNewRecord(data) {
+    var table = document.getElementById("employeeList").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.length);
+    cell1 = newRow.insertCell(0);
+    cell1.innerHTML = data.empresas;
+    cell2 = newRow.insertCell(1);
+    cell2.innerHTML = data.Numsoc;
+    cell3 = newRow.insertCell(2);
+    cell3.innerHTML = data.CC;
+    cell4 = newRow.insertCell(3);
+    cell4.innerHTML = data.email;
+    cell4 = newRow.insertCell(4);
+    cell4.innerHTML = `<a onClick="onEdit(this)">Atualizar</a>
+                       <a onClick="onDelete(this)">Eliminar</a>`;
+}
+
+function resetForm() {
+    document.getElementById("empresas").value = "";
+    document.getElementById("Numsoc").value = "";
+    document.getElementById("CC").value = "";
+    document.getElementById("email").value = "";
+    selectedRow = null;
+}
+
+function onEdit(td) {
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById("empresas").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("Numsoc").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("CC").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("email").value = selectedRow.cells[3].innerHTML;
+}
+function updateRecord(formData) {
+    selectedRow.cells[0].innerHTML = formData.empresas;
+    selectedRow.cells[1].innerHTML = formData.Numsoc;
+    selectedRow.cells[2].innerHTML = formData.CC;
+    selectedRow.cells[3].innerHTML = formData.email;
+}
+
+function onDelete(td) {
+    if (confirm('Tem a certeza que quer eliminar este sócio ?')) {
+        row = td.parentElement.parentElement;
+        document.getElementById("employeeList").deleteRow(row.rowIndex);
+        resetForm();
+    }
+}
+function validate() {
+    isValid = true;
+    if (document.getElementById("empresas").value == "") {
+        isValid = false;
+        document.getElementById("empresasValidationError").classList.remove("hide");
+    } else {
+        isValid = true;
+        if (!document.getElementById("empresasValidationError").classList.contains(""))
+            document.getElementById("empresasValidationError").classList.add("");
+    }
+    return isValid;
+}
+
+
