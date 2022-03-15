@@ -174,16 +174,7 @@ margin-top: 250px;
 
 }
 
-/* tabela de ver os sócios */
-.tabela{
-  background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8));
-  position: absolute;
-  width: 1000px;
-  height: auto;
-  margin-left: 300px;
-  margin-top: 150px;
-  border-radius: 25px;
-}
+
 
 .h-custom {
   height: calc(100% - 73px);
@@ -450,7 +441,7 @@ margin-top: 250px;
 }
 
 .list{
-  margin-top: -200px;
+  margin-top: -180px;
 }
 .gradient-custom-2 {
   /* fallback for old browsers */
