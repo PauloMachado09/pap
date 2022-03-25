@@ -63,60 +63,65 @@
         <br>
         <br><br><br><br><br>
 
-        <section class="newsletter">
+        <div class="content">
+            <br><br><br><br><br>
+            <div class="fundo">
+              <br>
+              <div class="container-fluid p-7 text-center letras">
+                <h1>Criar utilizador</h1>
+              </div>
+        
+              <br>
+              <div class="container">
+                <div class="row">
+                  
+                  <div class="col-m-5">
+                    <label for="nome" class="col-sm-12 col-form-label letras">Nome:
+                    </label>
+                    <input class="form-control" type="text" id="nome" placeholder="Inserir o nome ">
+                  </div>
+        
+                  <div class="col-m-5">
+                    <label for="nif" class="col-sm-12 col-form-label letras">Número de Indentificação Fiscal:
+                    </label>
+                    <input class="form-control" type="text" id="nif" placeholder="Inserir o NIF">
+                  </div>
+                  <div class="col-m-5">
+                    <label for="nif" class="col-sm-12 col-form-label letras">Número de telemovel:
+                    </label>
+                    <input class="form-control" type="text" id="telemovel" placeholder="Inserir o numero de telemovel">
+                  </div>
+        
+                  <div class="col-m-3">
+                    <label for="numeroT" class="col-sm-12 col-form-label letras">Número de Sócio:
+                    </label>
+                    <input class="form-control" type="text" id="numerosoc" placeholder="Inserir o número de Sócio">
+                  </div>
+        
+                  <div class="col-m-3">
+                    <label for="numeroT" class="col-sm-12 col-form-label letras">Número de Cartão de Cidadão
+                    </label>
+                    <input class="form-control" type="text" id="CC" placeholder="Inserir o número de CC">
+                  </div>
+        
+                  <div class="col-m-3">
+                    <label for="numeroT" class="col-sm-12 col-form-label letras">email:
+                    </label>
+                    <input class="form-control" type="text" id="email" placeholder="Inserir o email">
+                  </div>
+        
+        
+                  <div class="col-sm-3 btnTeste">
+                    <button type="button" onclick="insertUtilizador();" class="btnCriarUtilizadores">Criar Sócio</button>
+                  </div>
+                  
 
-          <div class="content">
-              <h1 class="heading">Criar Sócio</h1>
+                </div>
+                <br>
+              </div>
+            </div>
           </div>
-      
-      </section>
-        <table>
-          <tr>
-              <td>
-                  <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
-                      <div>
-                          <label>Nome:</label><label class="validation-error hide" id="fullNameValidationError">Preencha este espaço</label>
-                          <input type="text" name="fullName" id="fullName">
-                      </div>
-  
-  
-                      <div>
-                          <label>Número de Sócio:</label>
-                          <input type="text" name="Numsoc" id="Numsoc">
-                      </div>
-                      <div>
-                          <label>Número do Cartão de Cidadão:</label>
-                          <input type="text" name="CC" id="CC">
-                      </div>
-                      <div>
-                        <div>
-                          <label>Email:</label>
-                          <input type="text" name="email" id="email">
-                      </div>
-                      <div  class="form-action-buttons">
-                          <input type="submit" value="Submit">
-                      </div>
-                  </form>
-              </td>
-              <td>
-                  <table class="list" id="employeeList">
-                      <thead>
-                          <tr>
-                              <th>Nome</th>
-                              <th>Número de Sócio</th>
-                              <th>Número do CC</th>
-                              <th>email</th>
-                              <th></th>
-                          </tr>
-                      </thead>
-                      <tbody>
-  
-                      </tbody>
-                  </table>
-              </td>
-          </tr>
-      </table>
-        </div>
+        
   
     
     
