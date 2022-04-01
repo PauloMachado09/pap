@@ -2,16 +2,17 @@ function insertUtilizador() {
     const nome = document.getElementById('nome').value
     const nif = document.getElementById('nif').value
     const telemovel = document.getElementById('telemovel').value
-    const numsoc = document.getElementById('numsoc').value
-    const CC = document.getElementById('CC').value
+    const numsocio = document.getElementById('numsocio').value
+    const email= document.getElementById('email').value
+    const cc= document.getElementById('cc').value
 
-    if(validaFormData(nome,nif,telemovel,numsoc,CC,email)==true){
+    if(validaFormData(nome,nif,telemovel,numsocio,cc,email)==true){
         let fd = new FormData()
         fd.append('nome', nome )
         fd.append('nif', nif )
-        fd.append('numsoc', numsoc )
+        fd.append('numsocio', numsocio )
         fd.append('telemovel',telemovel )
-        fd.append('CC', CC )
+        fd.append('cc',cc )
         fd.append('email', email )
         var options = {
             method: 'POST',
@@ -34,14 +35,14 @@ function insertUtilizador() {
     }
 }
 
-function validaFormData(nome,nif,numsoc,telemovel,CC,email){
+function validaFormData(nome,nif,numsocio,telemovel,cc,email){
     if (nome == '')
         return alert('Tem de preencher o nome.')
-        if (CC == '')
+        if (cc == '')
         return alert('Tem de preencher o CC.')
         if (email == '')
         return alert('Tem de preencher o email.')
-        if (numsoc == '')
+        if (numsocio == '')
         return alert('Tem de preencher o numero de sócio.')
     if (nif == '')
         return alert('Tem de indicar o NIF.')
