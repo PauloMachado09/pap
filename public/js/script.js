@@ -6,7 +6,7 @@ function insertUtilizador() {
     const email= document.getElementById('email').value
     const cc= document.getElementById('cc').value
 
-    if(validaFormData(nome,nif,telemovel,numsocio,cc,email)==true){
+    if(validaFormData(nome,nif,numsocio,telemovel,cc,email)==true){
         let fd = new FormData()
         fd.append('nome', nome )
         fd.append('nif', nif )

@@ -4,7 +4,8 @@ const desconto = mongoose.Schema ({
 
     'nomeEmpresa': {'type': 'String'},
     'descricao' : {'type': 'String'},
-    'percentagem': {'type': 'String'}
+    'percentagem': {'type': 'Number'},
+    'categoria' : {'type' : 'String'}
     
 })
 

@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 
 const socio = mongoose.Schema({
     'nome' : {'type': 'String'},
-    'numsocio' : {'type': 'Number'},
     'cc' : {'type': 'Number'},
     'nif' : {'type': 'Number'},
     'telemovel' : {'type' : 'Number'},

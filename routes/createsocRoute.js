@@ -16,29 +16,38 @@ router.post('/', (req, res) => {
                nif: req.body.nif,
                telemovel: req.body.telemovel,
                email: req.body.email,
-               pin: req.body.pin,
-               pin_changed: false
+               password: req.body.password,
+               password_changed: false
             })
             newSocio.save()
-            .then((result) => {
+            .then((result,error) => {
+                if (error) throw error
                 console.log('Sócio criado')
                 res.json({
-                    msg: 'Objeto criado', 
-                    socio: result
+                    type: 'sucess',
+                    msg: 'Objeto criado'
                 })
             })
             .catch(error => {
                 console.log(error)
-                res.json({msg: 'Ocorreu um erro'})
+                res.json({
+                    type: 'error',
+                    msg: 'Não foi possivel fazer a sua inscrição. Tente Novamente'})
             })
         }
         else {
             res.json({msg:'Socio existente'})
             console.log(result)
+        
+            
         }
     })
     .catch(error =>{
         console.log(error)
+        res.json({
+            type: 'error',
+            msg: 'Não foi possivel fazer a sua inscrição. Tente Novamente'
+        })
     })
 })
 
