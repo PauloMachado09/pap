@@ -36,7 +36,7 @@ function insertUtilizador() {
 }
 
 function validaFormData(nome,nif,numsocio,telemovel,cc,email){
-    if (nome == '')
+    if (nome == '')  
         return alert('Tem de preencher o nome.')
         if (cc == '')
         return alert('Tem de preencher o CC.')
