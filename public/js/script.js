@@ -74,8 +74,3 @@ function validaFormData(nome,nif,numsocio,telemovel,cc,email){
     }
 
 }
-
-
-
-
-
