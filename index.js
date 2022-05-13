@@ -14,7 +14,7 @@ app.get('/public', function (req, response) {
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json({ extended: false }))
 
-app.use(express.static('./public'))
+app.use(express.static('./public')) 
 
 app.use('/createsoc', require('./routes/createsocRoute'))
 app.use('/getsoc', require('./routes/getsocRoute'))

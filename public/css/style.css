@@ -336,9 +336,10 @@ margin-top: 250px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (minmax(25rem, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   gap: 1.5rem;
 }
+
 
 .footer .box-container .box h3 {
   font-size: 2rem;
@@ -583,7 +584,7 @@ h2 {
   padding: 20px;
 }
 
-#formContent {
+#formContent {  
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   background: #fff;
