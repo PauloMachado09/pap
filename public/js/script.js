@@ -20,7 +20,7 @@ function insertUtilizador() {
                 'Accept': 'application/json',
                 'myheader': nif
             },  
-            body: fd,
+            body: fd,      
         }
         fetch('http://localhost:3000/createsoc', options)
             .then(res => res.json())
